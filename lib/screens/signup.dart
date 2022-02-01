@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:loginsignup/styles/app_colors.dart';
 import 'package:loginsignup/screens/signin.dart';
+import 'package:loginsignup/widgets/custom_formfield.dart';
 import 'package:loginsignup/widgets/custom_header.dart';
 
 class SignUp extends StatelessWidget {
@@ -39,20 +40,37 @@ class SignUp extends StatelessWidget {
                         left: MediaQuery.of(context).size.width * 0.09),
                     child: Image.asset("assets/images/login.png"),
                   ),
-                  // InputField(headerText: "Username", hintTexti: "Username"),
-                  // const SizedBox(
-                  //   height: 10,
-                  // ),
-                  // InputField(
-                  //     headerText: "Email", hintTexti: "dion@example.com"),
-                  // const SizedBox(
-                  //   height: 10,
-                  // ),
-                  // InputFieldPassword(
-                  //   headerText: "Password",
-                  //   hintTexti: "At least 8 Charecter",
-                  // ),
-                  // const CheckerBox(),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  const CustomFormField(
+                    headingText: "UserName",
+                    hintText: "username",
+                    obsecureText: false,
+                    suffixIcon: SizedBox(),
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  const CustomFormField(
+                    headingText: "Email",
+                    hintText: "Email",
+                    obsecureText: false,
+                    suffixIcon: SizedBox(),
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  CustomFormField(
+                    headingText: "Password",
+                    hintText: "At least 8 Character",
+                    obsecureText: true,
+                    suffixIcon: IconButton(
+                        icon: const Icon(Icons.visibility), onPressed: () {}),
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
                   InkWell(
                     onTap: () {
                       print("Sign up click");
@@ -110,117 +128,3 @@ class SignUp extends StatelessWidget {
     );
   }
 }
-
-// // ignore: must_be_immutable
-// class InputField extends StatelessWidget {
-//   String headerText;
-//   String hintTexti;
-//   InputField({Key? key, required this.headerText, required this.hintTexti})
-//       : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Column(
-//       crossAxisAlignment: CrossAxisAlignment.start,
-//       children: [
-//         Container(
-//           margin: const EdgeInsets.only(
-//             left: 20,
-//             right: 20,
-//             bottom: 10,
-//           ),
-//           child: Text(
-//             headerText,
-//             style: const TextStyle(
-//                 color: Colors.black, fontSize: 22, fontWeight: FontWeight.w500),
-//           ),
-//         ),
-//         Container(
-//             margin: const EdgeInsets.only(left: 20, right: 20),
-//             decoration: BoxDecoration(
-//               color: grayshade.withOpacity(0.5),
-//               // border: Border.all(
-//               //   width: 1,
-//               // ),
-//               borderRadius: BorderRadius.circular(15),
-//             ),
-//             child: Padding(
-//               padding: const EdgeInsets.symmetric(horizontal: 12.0),
-//               child: TextField(
-//                 decoration: InputDecoration(
-//                   hintText: hintTexti,
-//                   border: InputBorder.none,
-//                 ),
-//               ),
-//             )
-//             //IntrinsicHeight
-
-//             ),
-//       ],
-//     );
-//   }
-// }
-
-// class InputFieldPassword extends StatefulWidget {
-//   String headerText;
-//   String hintTexti;
-
-//   InputFieldPassword(
-//       {Key? key, required this.headerText, required this.hintTexti})
-//       : super(key: key);
-
-//   @override
-//   State<InputFieldPassword> createState() => _InputFieldPasswordState();
-// }
-
-// class _InputFieldPasswordState extends State<InputFieldPassword> {
-//   bool _visible = true;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Column(
-//       crossAxisAlignment: CrossAxisAlignment.start,
-//       children: [
-//         Container(
-//           margin: const EdgeInsets.only(
-//             left: 20,
-//             right: 20,
-//             bottom: 10,
-//           ),
-//           child: Text(
-//             widget.headerText,
-//             style: const TextStyle(
-//                 color: Colors.black, fontSize: 22, fontWeight: FontWeight.w500),
-//           ),
-//         ),
-//         Container(
-//           margin: const EdgeInsets.only(left: 20, right: 20),
-//           decoration: BoxDecoration(
-//             color: grayshade.withOpacity(0.5),
-//             // border: Border.all(
-//             //   width: 1,
-//             // ),
-//             borderRadius: BorderRadius.circular(15),
-//           ),
-//           child: Padding(
-//             padding: const EdgeInsets.symmetric(horizontal: 12.0),
-//             child: TextField(
-//               obscureText: _visible,
-//               decoration: InputDecoration(
-//                   hintText: widget.hintTexti,
-//                   border: InputBorder.none,
-//                   suffixIcon: IconButton(
-//                       icon: Icon(
-//                           _visible ? Icons.visibility : Icons.visibility_off),
-//                       onPressed: () {
-//                         setState(() {
-//                           _visible = !_visible;
-//                         });
-//                       })),
-//             ),
-//           ),
-//         ),
-//       ],
-//     );
-//   }
-// }
