@@ -1,6 +1,6 @@
 # loginsignup
 
-A new Flutter project for login and sign up.
+A new Flutter project for login and sign up Using firebase/firestore as backend with GetX state management architecture.
 
 ## Getting Started
 
@@ -13,7 +13,6 @@ A few resources to get you started if this is your first Flutter project:
 ![ee2b3a1af1b5a453b591f76a4134cbea](https://user-images.githubusercontent.com/22778491/143621138-b8a88fa9-34c9-481e-8634-3e736d7c11b6.png)
 
 <img width="252" alt="login" src="https://user-images.githubusercontent.com/22778491/143621067-1abe6d0f-64fb-4a67-a54e-0946ad01fa6e.png">
-
 
 - [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
