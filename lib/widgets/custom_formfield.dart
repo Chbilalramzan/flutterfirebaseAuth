@@ -1,17 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:loginsignup/styles/app_colors.dart';
+import 'package:loginsignup/styles/text_styles.dart';
 
 class CustomFormField extends StatelessWidget {
   final String headingText;
   final String hintText;
   final bool obsecureText;
   final Widget suffixIcon;
+  final TextInputType textInputType;
+  final TextInputAction textInputAction;
+  final TextEditingController controller;
+  // final TextStyle hintTextStyle;
+  // final TextStyle textStyle;
+  // final bool hasFocus;
+  final int maxLines;
+
   const CustomFormField(
       {Key? key,
       required this.headingText,
       required this.hintText,
       required this.obsecureText,
-      required this.suffixIcon})
+      required this.suffixIcon,
+      required this.textInputType,
+      required this.textInputAction,
+      required this.controller,
+      // required this.hintTextStyle,
+      // required this.textStyle,
+      // required this.hasFocus,
+      required this.maxLines})
       : super(key: key);
 
   @override
@@ -27,25 +43,26 @@ class CustomFormField extends StatelessWidget {
           ),
           child: Text(
             headingText,
-            style: const TextStyle(
-                color: Colors.black, fontSize: 22, fontWeight: FontWeight.w500),
+            style: KTextStyle.textFieldHeading,
           ),
         ),
         Container(
           margin: const EdgeInsets.only(left: 20, right: 20),
           decoration: BoxDecoration(
-            color: AppColors.grayshade.withOpacity(0.5),
-            // border: Border.all(
-            //   width: 1,
-            // ),
+            color: AppColors.grayshade,
             borderRadius: BorderRadius.circular(15),
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12.0),
             child: TextField(
+              maxLines: maxLines,
+              controller: controller,
+              textInputAction: textInputAction,
+              keyboardType: textInputType,
               obscureText: obsecureText,
               decoration: InputDecoration(
                   hintText: hintText,
+                  hintStyle: KTextStyle.textFieldHintStyle,
                   border: InputBorder.none,
                   suffixIcon: suffixIcon),
             ),

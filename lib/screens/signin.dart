@@ -1,12 +1,24 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:loginsignup/styles/app_colors.dart';
 import 'package:loginsignup/screens/signup.dart';
+import 'package:loginsignup/widgets/custom_button.dart';
 import 'package:loginsignup/widgets/custom_formfield.dart';
 import 'package:loginsignup/widgets/custom_header.dart';
+import 'package:loginsignup/widgets/custom_richtext.dart';
 
-class Signin extends StatelessWidget {
+class Signin extends StatefulWidget {
   const Signin({Key? key}) : super(key: key);
+
+  @override
+  State<Signin> createState() => _SigninState();
+}
+
+class _SigninState extends State<Signin> {
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  String get email => _emailController.text.trim();
+  String get password => _passwordController.text.trim();
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +33,10 @@ class Signin extends StatelessWidget {
           ),
           CustomHeader(
             text: 'Log In.',
-            onTap: () {},
+            onTap: () {
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => const SignUp()));
+            },
           ),
           Positioned(
             top: MediaQuery.of(context).size.height * 0.08,
@@ -46,21 +61,29 @@ class Signin extends StatelessWidget {
                   const SizedBox(
                     height: 24,
                   ),
-                  const CustomFormField(
+                  CustomFormField(
                     headingText: "Email",
                     hintText: "Email",
                     obsecureText: false,
-                    suffixIcon: SizedBox(),
+                    suffixIcon: const SizedBox(),
+                    controller: _emailController,
+                    maxLines: 1,
+                    textInputAction: TextInputAction.done,
+                    textInputType: TextInputType.emailAddress,
                   ),
                   const SizedBox(
                     height: 16,
                   ),
                   CustomFormField(
                     headingText: "Password",
+                    maxLines: 1,
+                    textInputAction: TextInputAction.done,
+                    textInputType: TextInputType.text,
                     hintText: "At least 8 Character",
                     obsecureText: true,
                     suffixIcon: IconButton(
                         icon: const Icon(Icons.visibility), onPressed: () {}),
+                    controller: _passwordController,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -80,53 +103,19 @@ class Signin extends StatelessWidget {
                       ),
                     ],
                   ),
-                  InkWell(
-                    onTap: () {
-                      print("Sign up click");
-                    },
-                    child: Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height * 0.07,
-                      margin: const EdgeInsets.only(left: 20, right: 20),
-                      decoration: const BoxDecoration(
-                          color: AppColors.blue,
-                          borderRadius: BorderRadius.all(Radius.circular(10))),
-                      child: const Center(
-                        child: Text(
-                          "Sign in",
-                          style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.w500,
-                              color: AppColors.whiteshade),
-                        ),
-                      ),
-                    ),
+                  AuthButton(
+                    onTap: () {},
+                    text: 'Sign In',
                   ),
-                  Container(
-                    margin: EdgeInsets.only(
-                        left: MediaQuery.of(context).size.width * 0.149,
-                        top: MediaQuery.of(context).size.height * 0.08),
-                    child: Text.rich(
-                      TextSpan(
-                          text: "Don't already Have an account? ",
-                          style: TextStyle(
-                              color: AppColors.grayshade.withOpacity(0.8),
-                              fontSize: 16),
-                          children: [
-                            TextSpan(
-                                text: "Sign Up",
-                                style: const TextStyle(
-                                    color: AppColors.blue, fontSize: 16),
-                                recognizer: TapGestureRecognizer()
-                                  ..onTap = () {
-                                    Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => SignUp()));
-                                    print("Sign Up click");
-                                  }),
-                          ]),
-                    ),
+                  CustomRichText(
+                    discription: "Don't already Have an account? ",
+                    text: "Sign Up",
+                    onTap: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const SignUp()));
+                    },
                   ),
                 ],
               ),
