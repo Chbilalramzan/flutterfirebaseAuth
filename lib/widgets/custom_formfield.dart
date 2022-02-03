@@ -10,9 +10,6 @@ class CustomFormField extends StatelessWidget {
   final TextInputType textInputType;
   final TextInputAction textInputAction;
   final TextEditingController controller;
-  // final TextStyle hintTextStyle;
-  // final TextStyle textStyle;
-  // final bool hasFocus;
   final int maxLines;
 
   const CustomFormField(
@@ -24,9 +21,6 @@ class CustomFormField extends StatelessWidget {
       required this.textInputType,
       required this.textInputAction,
       required this.controller,
-      // required this.hintTextStyle,
-      // required this.textStyle,
-      // required this.hasFocus,
       required this.maxLines})
       : super(key: key);
 
